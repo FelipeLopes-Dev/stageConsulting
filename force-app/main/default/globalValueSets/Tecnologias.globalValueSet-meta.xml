@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>C#</fullName>
+        <default>false</default>
+        <label>C#</label>
+    </customValue>
+    <customValue>
+        <fullName>JavaScript</fullName>
+        <default>false</default>
+        <label>JavaScript</label>
+    </customValue>
+    <customValue>
+        <fullName>Python</fullName>
+        <default>false</default>
+        <label>Python</label>
+    </customValue>
+    <customValue>
+        <fullName>Salesforce</fullName>
+        <default>false</default>
+        <label>Salesforce</label>
+    </customValue>
+    <customValue>
+        <fullName>SAP</fullName>
+        <default>false</default>
+        <label>SAP</label>
+    </customValue>
+    <customValue>
+        <fullName>Mulesoft</fullName>
+        <default>false</default>
+        <label>Mulesoft</label>
+    </customValue>
+    <masterLabel>Tecnologias</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

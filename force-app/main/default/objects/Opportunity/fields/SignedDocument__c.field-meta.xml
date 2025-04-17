@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SignedDocument__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Control field to ensure that the Digital Signature email is sent only once.</description>
+    <label>Email Signed Document</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

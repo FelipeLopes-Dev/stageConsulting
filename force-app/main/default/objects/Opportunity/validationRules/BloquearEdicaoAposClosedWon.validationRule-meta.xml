@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BloquearEdicaoAposClosedWon</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, &quot;Closed Won&quot;),
+    ISCHANGED(Name) ||
+    ISCHANGED(DataInicio__c) ||
+    ISCHANGED(CloseDate) ||
+    ISCHANGED(Amount) ||
+    ISCHANGED(ProjectTechnology__c) ||
+    ISCHANGED(CustoEstimadoProjeto__c)
+)</errorConditionFormula>
+    <errorMessage>Não é permitido alterar os dados da oportunidade após ela ter sido marcada como Closed Won.</errorMessage>
+</ValidationRule>

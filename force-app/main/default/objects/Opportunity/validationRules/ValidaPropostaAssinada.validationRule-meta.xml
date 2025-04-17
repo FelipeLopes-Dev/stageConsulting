@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidaPropostaAssinada</fullName>
+    <active>true</active>
+    <description>Valida se o usuário anexou a Proposta Assinada por ambas as partes.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(StageName, &quot;Closed Won&quot;),
+    NOT(CustomerDocSign__c)
+)</errorConditionFormula>
+    <errorMessage>Para finalizar a Oportunidade, é necessário anexar a Proposta Assinada pelo cliente.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidaAnexoDeAcordo</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(StageName, &quot;Formalization&quot;),
+        ISPICKVAL(StageName, &quot;Closed Won&quot;)
+    ),
+    NOT(CustomerFileAttachment__c)
+)</errorConditionFormula>
+    <errorMessage>É necessário anexar o documento de &quot;de acordo&quot; à Oportunidade.</errorMessage>
+</ValidationRule>

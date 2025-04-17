@@ -1,0 +1,112 @@
+<apex:page renderAs="pdf" contentType="application/pdf" applyBodyTag="false" standardController="Opportunity">
+    <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    font-size: 12pt;
+                    margin: 40px;
+                }
+                hr {
+				    width: 50px;
+    				margin:0 auto;
+                	border: none;
+                	border-top: 1px solid black;
+				}
+
+                h1 {
+                    font-size: 18pt;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                .section {
+                    margin-top: 40px;
+                }
+
+                .signature-container {
+                    margin-top: 80px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 100px; /* espaço entre as assinaturas */
+                }
+                
+                .signature-block {
+                    width: 50%;
+                    text-align: center;
+                }
+                
+                .signature-line {
+                    margin-top: 5px;
+                    font-weight: bold;
+                }
+
+                .top-bar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+
+                .logo {
+                    height: 40px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="top-bar">
+                <div></div>
+                <div style="text-align: right;">
+                    <img src="{!URLFOR($Resource.StageLogo)}" class="logo"/>
+                </div>
+            </div>
+
+            <h1>Proposta Comercial</h1>
+
+            <p>Prezados,</p>
+            <p>Segue o documento referente à proposta comercial para o projeto de tecnologia.</p>
+
+            <div class="section">
+                <strong>Nome da Oportunidade:</strong> {!Opportunity.Name}<br/>
+                <strong>Tecnologia:</strong> {!Opportunity.ProjectTechnology__c}<br/>
+
+                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                    <span><strong>Data de Início:</strong> </span>
+                    <apex:param value="{!Opportunity.DataInicio__c}" />
+                </apex:outputText><br/>
+
+                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                    <span><strong>Data de Encerramento:</strong> </span>
+                    <apex:param value="{!Opportunity.CloseDate}" />
+                </apex:outputText><br/>
+
+                <strong>Valor:</strong>
+                <apex:outputText value="R$ {0,number,###,##0.00}">
+                    <apex:param value="{!Opportunity.Amount}" />
+                </apex:outputText>
+            </div>
+
+            <div class="section">
+                <p>Este documento tem validade legal e deve ser assinado pelas partes interessadas abaixo.</p>
+            </div>
+
+            <div class="signature-container">
+                <div class="signature-block">
+                    <hr/>
+                    <div class="signature-line">Stage Consulting</div>                    
+                </div><br/>
+                <div class="signature-block">
+                    <div class="signature-line">
+                        <hr/>
+                        <apex:outputText rendered="{!NOT(ISBLANK(Opportunity.AccountId))}" value="{!Opportunity.Account.Name}" />
+                        <apex:outputText rendered="{!ISBLANK(Opportunity.AccountId)}" value="{!Opportunity.Lead__r.Company}" />                        
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: right;">
+                <p>Data: <apex:outputText value="{0, date, dd/MM/yyyy}"><apex:param value="{!TODAY()}" /></apex:outputText></p>
+            </div>
+        </body>
+    </html>
+</apex:page>
